@@ -27,6 +27,14 @@ body{
     font-size: 2rem;
 }
 
+.inputField {
+    height: 90px;
+    width: 55px;
+    border: none;
+    text-align: center;
+    font: 3rem monaco, monospace; 
+}
+
 #button {
     margin: 0 auto;
     display: flex;

@@ -18,7 +18,7 @@ const countLetters = () => {
     return numOfLetters;
 }
 
-//append number of divs equal to counted letters
+//append number of divs equal to counted letters and append text input fields to divs
 const appendDivs = () => {
     for (let i = 0; i < numOfLetters; i++) {
         custid++;
@@ -27,6 +27,12 @@ const appendDivs = () => {
         div.setAttribute('id', custid)
         game.appendChild(div);
         game.style.width = (numOfLetters * 65) + "px";
+        let inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.className = "inputField";
+        inputField.setAttribute('maxlength', 1);
+        inputField.setAttribute('id', custid + 'i');
+        div.appendChild(inputField);
     }
 }
 
