@@ -1,6 +1,7 @@
 const words = ["Hallo", "Spargel", "Automobil", "Fahrzeug", "Arbeiten", "Hannes", "Mama", "Tod", "Du", "Straßenverkehr"];
 const game = document.getElementById('game');
 const btn = document.getElementById('button');
+const checkbtn = document.getElementById('checkButton');
 let numOfLetters = 0;
 let chosenWord;
 let custid = 0;
@@ -8,7 +9,7 @@ let singleLetters = [];
 
 //choose a random word from the words array
 const chooseWord = () => {
-    chosenWord = words[Math.floor(Math.random()* words.length)];
+    chosenWord = words[Math.floor(Math.random()* words.length)].toLowerCase();
     return chosenWord;
 }
 
@@ -55,6 +56,22 @@ const clear = () => {
     }
 }*/
 
+//checks inputvalues with the letters of the chosen word. Changes background color of div.
+const checkInputValues = () => {
+    for (let i = 0; i < chosenWord.length; i++) {
+        let inputFie = document.getElementById(`${i + 1}i`);
+        let inputVal = inputFie.value.toLowerCase();
+        console.log(inputVal);
+        if (inputVal == chosenWord[i]) {
+            inputFie.style.backgroundColor = "green";
+        } else if (chosenWord.includes(inputVal)) {
+            inputFie.style.backgroundColor = "yellow";
+        } else {
+            inputFie.style.backgroundColor = "red";
+        }
+    }
+}
+
 const playGame = () => {
     clear();
     chooseWord();
@@ -64,3 +81,4 @@ const playGame = () => {
 }
 
 btn.addEventListener('click', playGame);
+checkbtn.addEventListener('click', checkInputValues);

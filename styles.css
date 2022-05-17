@@ -35,7 +35,7 @@ body{
     font: 3rem monaco, monospace; 
 }
 
-#button {
-    margin: 0 auto;
+.button {
+    margin: 30px auto;
     display: flex;
 }
