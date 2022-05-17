@@ -6,13 +6,13 @@ body{
 #game {
     border: 1px solid black;
     border-radius: 10px;
-    min-width: 300px;
     max-width: 900px;
     width: auto;
     height: 200px;
     display: flex;
     margin: 50px auto;
     justify-content: space-around;
+    text-align: center;
 }
 
 .divTwo {
@@ -22,6 +22,9 @@ body{
     margin: auto auto;
     border: 1px solid red;
     border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 }
 
 #button {

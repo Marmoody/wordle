@@ -33,12 +33,14 @@ const clear = () => {
         game.removeChild(child);
         child = game.firstElementChild;
     }
+    custid = 0;
 }
 
 const letters = () => {
     singleLetters = Array.from(chosenWord);
     for (let i = 0; i < chosenWord.length; i++) {
-        let lDiv = document.getElementById(divId);
+        let lDiv = document.getElementById(`${i + 1}`);
+        lDiv.innerHTML = chosenWord[i];
     }
 }
 
