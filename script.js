@@ -6,6 +6,8 @@ let numOfLetters = 0;
 let chosenWord;
 let custid = 0;
 let singleLetters = [];
+let guessWord = [];
+
 
 //choose a random word from the words array
 const chooseWord = () => {
@@ -61,14 +63,24 @@ const checkInputValues = () => {
     for (let i = 0; i < chosenWord.length; i++) {
         let inputFie = document.getElementById(`${i + 1}i`);
         let inputVal = inputFie.value.toLowerCase();
-        console.log(inputVal);
+        guessWord.push(inputVal);
+        console.log(guessWord);
         if (inputVal == chosenWord[i]) {
             inputFie.style.backgroundColor = "green";
         } else if (chosenWord.includes(inputVal)) {
             inputFie.style.backgroundColor = "yellow";
+        } else if (inputVal == null || inputVal == "") {
+            inputFie.style.backgroundColor = "red";
         } else {
             inputFie.style.backgroundColor = "red";
         }
+    }
+    if (guessWord.join('').toLowerCase() === chosenWord.toLowerCase()) {
+        alert('Congrats!');
+        clear();
+    } else {
+        guessWord = [];
+        appendDivs();
     }
 }
 

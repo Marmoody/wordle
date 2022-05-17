@@ -20,8 +20,6 @@ body{
     height: 100px;
     width: 60px;
     margin: auto auto;
-    border: 1px solid red;
-    border-radius: 5px;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
@@ -30,7 +28,8 @@ body{
 .inputField {
     height: 90px;
     width: 55px;
-    border: none;
+    border: 1px solid red;
+    border-radius: 5px;
     text-align: center;
     font: 3rem monaco, monospace; 
 }
