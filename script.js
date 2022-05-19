@@ -1,4 +1,4 @@
-const words = ["Hallo", "Spargel", "Automobil", "Fahrzeug", "Arbeiten", "Hannes", "Mama", "Tod", "Du", "Straßenverkehr"];
+const words = ["OFB", "G32", "Otto", "Wilde", "Arbeiten", "Düsseldorf", "Startup", "Grillen", "Steak", "Sizzle", "Fleisch", "Karl", "Mops", "Office", "DHDL", "Miele", "Kickstarter", "Backer", "Flagshipstore", "Unterbilk", "Tischtennis", "Darts", "Sales", "Logistik", "Außenküche", "Plattform", "Firlefanz", "Beef", "Oberhitzegrill", "Salz", "Revolutionär", "Modular", "Unternehmen", "Team", "RageCage", "Weihnachtsfeier" ];
 const game = document.getElementById('game');
 const btn = document.getElementById('button');
 const checkbtn = document.getElementById('checkButton');
@@ -53,6 +53,7 @@ const clear = () => {
     custid = 0;
     guesses = 0;
     checkbtn.style.visibility = 'hidden';
+    btn.style.visibility = 'visible';
 }
 
 //inserts letters from chosen word into the divs.
@@ -77,9 +78,9 @@ const checkInputValues = () => {
             } else if (chosenWord.includes(inputVal)) {
                 inputFie.style.backgroundColor = "yellow";
             } else if (inputVal == null || inputVal == "") {
-                inputFie.style.backgroundColor = "red";
+                inputFie.style.backgroundColor = "#d12502";
             } else {
-                inputFie.style.backgroundColor = "red";
+                inputFie.style.backgroundColor = "#d12502";
             }
         }
     } else {
@@ -102,10 +103,8 @@ const checkInputValues = () => {
         }
     }
     
-    console.log(guessWord);
-    console.log(chosenWord.length);
     if (guesses <= 4 && guessWord.join('').toLowerCase() === chosenWord.toLowerCase()) {
-        alert('Congrats!');
+        alert('Glückwunsch, du hast es erraten!');
         clear();
     } else if (guesses === 4 && guessWord.join('').toLowerCase() != chosenWord.toLowerCase()) {
         alert('Game Over! Try Again!')
@@ -123,6 +122,7 @@ const playGame = () => {
     countLetters();
     appendNewDivs();
     checkbtn.style.visibility = 'visible';
+    btn.style.visibility = 'hidden';
     //letters();
 }
 

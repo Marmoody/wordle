@@ -1,11 +1,37 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: black;
+    text-align: center;
+}
+
+.introbox {
+    display: flex;
+    justify-content:center;
+}
+
+.intro {
+    margin: 10px;
+    font: 1rem monaco, monospace; 
+    color: white;
+    width: 300px;
+}
+
+.intro h1 {
+    margin: 10px;
+    font: 3rem monaco, monospace; 
+    color: white;
+    width: 300px;
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+    margin: auto 50px;
 }
 
 #game {
-    border: 1px solid black;
-    border-radius: 10px;
+    background-color: white;
     max-width: 900px;
     width: auto;
     height: auto;
@@ -29,15 +55,21 @@ body{
 .inputField {
     height: 90px;
     width: 55px;
-    border: 1px solid red;
-    border-radius: 5px;
+    background-color: lightgray;
     text-align: center;
     font: 3rem monaco, monospace; 
 }
 
 .button {
     margin: 30px auto;
-    display: flex;
+    background-color: #bf2000;
+    font: 2rem monaco, monospace; 
+    display: inline-block;
+    border: none;
+    width: 240px;
+    height: 60px;
+    text-align: center;
+
 }
 
 #checkButton {
