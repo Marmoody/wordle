@@ -8,9 +8,10 @@ body{
     border-radius: 10px;
     max-width: 900px;
     width: auto;
-    height: 200px;
-    display: flex;
-    margin: 50px auto;
+    height: auto;
+    min-height: 100px;
+    display: block;
+    margin: 0 auto;
     justify-content: space-around;
     text-align: center;
 }
@@ -37,4 +38,18 @@ body{
 .button {
     margin: 30px auto;
     display: flex;
+}
+
+#checkButton {
+    visibility: hidden;
+}
+
+.divBox {
+    display: flex;
+    max-width: 900px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    justify-content: space-around;
+    text-align: center;
 }

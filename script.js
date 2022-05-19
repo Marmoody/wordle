@@ -7,6 +7,8 @@ let chosenWord;
 let custid = 0;
 let singleLetters = [];
 let guessWord = [];
+let guesses = 0;
+let count = 0;
 
 
 //choose a random word from the words array
@@ -21,15 +23,17 @@ const countLetters = () => {
     return numOfLetters;
 }
 
-//append number of divs equal to counted letters and append text input fields to divs
-const appendDivs = () => {
+const appendNewDivs = () => {
+    let divBox = document.createElement('div');
+    divBox.classList.add('divBox');
+    game.appendChild(divBox);
     for (let i = 0; i < numOfLetters; i++) {
         custid++;
         let div = document.createElement('div');
         div.classList.add('divTwo');
         div.setAttribute('id', custid)
-        game.appendChild(div);
-        game.style.width = (numOfLetters * 65) + "px";
+        divBox.appendChild(div);
+        divBox.style.width = (numOfLetters * 65) + "px";
         let inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.className = "inputField";
@@ -47,6 +51,8 @@ const clear = () => {
         child = game.firstElementChild;
     }
     custid = 0;
+    guesses = 0;
+    checkbtn.style.visibility = 'hidden';
 }
 
 //inserts letters from chosen word into the divs.
@@ -60,27 +66,54 @@ const clear = () => {
 
 //checks inputvalues with the letters of the chosen word. Changes background color of div.
 const checkInputValues = () => {
-    for (let i = 0; i < chosenWord.length; i++) {
-        let inputFie = document.getElementById(`${i + 1}i`);
-        let inputVal = inputFie.value.toLowerCase();
-        guessWord.push(inputVal);
-        console.log(guessWord);
-        if (inputVal == chosenWord[i]) {
-            inputFie.style.backgroundColor = "green";
-        } else if (chosenWord.includes(inputVal)) {
-            inputFie.style.backgroundColor = "yellow";
-        } else if (inputVal == null || inputVal == "") {
-            inputFie.style.backgroundColor = "red";
-        } else {
-            inputFie.style.backgroundColor = "red";
+    if (guesses === 0) {
+        for (let i = 0; i < (chosenWord.length) * (guesses + 1); i++) {
+            let inputFie = document.getElementById(`${i + 1}i`);
+            let inputVal = inputFie.value.toLowerCase();
+            guessWord.push(inputVal);
+            console.log(guessWord);
+            if (inputVal == chosenWord[i]) {
+                inputFie.style.backgroundColor = "green";
+            } else if (chosenWord.includes(inputVal)) {
+                inputFie.style.backgroundColor = "yellow";
+            } else if (inputVal == null || inputVal == "") {
+                inputFie.style.backgroundColor = "red";
+            } else {
+                inputFie.style.backgroundColor = "red";
+            }
+        }
+    } else {
+        let j = 0;
+        for (let i = (chosenWord.length * guesses); i < (chosenWord.length) * (guesses + 1); i++) {
+            let inputFie = document.getElementById(`${i + 1}i`);
+            let inputVal = inputFie.value.toLowerCase();
+            guessWord.push(inputVal);
+            console.log(inputVal);
+            if (inputVal == chosenWord[j]) {
+                inputFie.style.backgroundColor = "green";
+            } else if (chosenWord.includes(inputVal)) {
+                inputFie.style.backgroundColor = "yellow";
+            } else if (inputVal == null || inputVal == "") {
+                inputFie.style.backgroundColor = "red";
+            } else {
+                inputFie.style.backgroundColor = "red";
+            }
+            j++;
         }
     }
-    if (guessWord.join('').toLowerCase() === chosenWord.toLowerCase()) {
+    
+    console.log(guessWord);
+    console.log(chosenWord.length);
+    if (guesses <= 4 && guessWord.join('').toLowerCase() === chosenWord.toLowerCase()) {
         alert('Congrats!');
+        clear();
+    } else if (guesses === 4 && guessWord.join('').toLowerCase() != chosenWord.toLowerCase()) {
+        alert('Game Over! Try Again!')
         clear();
     } else {
         guessWord = [];
-        appendDivs();
+        guesses++;
+        appendNewDivs();
     }
 }
 
@@ -88,7 +121,8 @@ const playGame = () => {
     clear();
     chooseWord();
     countLetters();
-    appendDivs();
+    appendNewDivs();
+    checkbtn.style.visibility = 'visible';
     //letters();
 }
 
